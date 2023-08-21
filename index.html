@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Masterdots Game</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap"
+			rel="stylesheet" />
+		<link rel="stylesheet" href="./css/reset.css" />
+		<!-- <link rel="stylesheet" href="./css/style.css" />  -->
+	</head>
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Masterdots Game</title>
-   <link rel="stylesheet" href="./css/reset.css">
-   <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<body>
-   <!-- header -->
-   <header>
-      <img src="./img/logo.png" alt="Logo de Mastermind">
-   </header>
-   <!-- form -->
-   <main>
-      <form action="#">
-         <div class="itemform">
-            <label for="nick">Enter your name:</label>
-            <input type="text" name="nick" id="nick" required>
-         </div>
-         <div class="itemform">
-            <label for="size">Size for the game: </label>
-            <select name="size" id="size" required>
-               <option value="">--Select the size--</option>
-               <option value="1">4x4</option>
-               <option value="2">5x5</option>
-               <option value="3">6x6</option>
-            </select>
-            <div class="itemform">
-               <input type="submit" value="Play">
-            </div>
-         </div>
-      </form>
-   </main>
-   <!-- footer -->
-   <footer>
-      <p>Curso Frontend Mastermind, HTML, CSS & JS</p>
-   </footer>
-
-</body>
-
+	<body>
+		<!-- header -->
+		<header>
+			<img src="./img/logo.png" alt="Logo de Mastermind" />
+		</header>
+		<!-- form -->
+		<main>
+			<form action="#">
+				<div class="itemform">
+					<label for="nick">Enter your name:</label>
+					<input type="text" name="nick" id="nick" required />
+				</div>
+				<div class="itemform">
+					<label for="size">Size for the game: </label>
+					<select name="size" id="size" required>
+						<option value="">--Select the size--</option>
+						<option value="1">4x4</option>
+						<option value="2">5x5</option>
+						<option value="3">6x6</option>
+					</select>
+				</div>
+				<div class="itemform">
+					<input type="submit" value="Play" />
+				</div>
+			</form>
+		</main>
+		<!-- footer -->
+		<footer>
+			<p>Curso Frontend Mastermind, HTML, CSS & JS</p>
+		</footer>
+	</body>
 </html>
