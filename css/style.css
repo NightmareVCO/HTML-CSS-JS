@@ -1,35 +1,96 @@
 header,
 footer {
-   text-align: center;
-   width: 400px;
-   margin: 30px auto 0px auto;
+	text-align: center;
+	width: 300px;
+	margin: 30px auto 0px auto;
 }
 
 body {
-   background-color: #f5f5f5;
-   font-family: 'Poppins', sans-serif;
+	background-color: #f5f5f5;
+	font-family: "Poppins", sans-serif;
 }
 
 main {
-   /* Para el auto, debemos tener valores de ancho*/
-   width: 400px;
-   margin: 30px auto 0px auto;
+	/* Para el auto, debemos tener valores de ancho*/
+	width: 300px;
+	margin: 30px auto 0px auto;
 }
 
 form {
-   font-size: 18px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 15px;
+	font-size: 18px;
 }
 
-.itemform {
-   margin-bottom: 10px;
+/* Cambiado por row-gap arriba */
+/* .itemform {
+	margin-bottom: 10px; 
+} */
+
+label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+#nicka {
+	float: left;
+	font-family: "Poppins", sans-serif;
+	text-align: center;
+	width: 20px;
+	background-color: #ced4da;
+	border: 1px solid #ced4da;
+	padding: 10px;
+	border-radius: 5px 0px 0px 5px;
+	font-weight: 400;
+	font-size: 18px;
 }
 
 input {
-   font-family: 'Poppins', sans-serif;
-   font-size: 18px;
+	display: inline;
+	/* Para que al aplicar el float este funcione*/
+	font-family: "Poppins", sans-serif;
+	border: 1px solid #ced4da;
+	padding: 10px;
+	border-radius: 0px 5px 5px 0px;
+	width: 236px;
+	font-weight: 200;
+	font-size: 18px;
+}
+input[type="email"] {
+	border: 1px solid #ced4da;
+	font-weight: 200;
+	font-size: 18px;
+	border-radius: 5px;
+	width: 278px;
 }
 
 select {
-   font-family: 'Poppins', sans-serif;
-   font-size: 16px;
+	font-family: "Poppins", sans-serif;
+	width: 100%;
+	border: 1px solid #ced4da;
+	border-radius: 5px;
+	font-weight: 200;
+	font-size: 18px;
+}
+
+input[type="submit"] {
+	background-color: #fd0c49;
+	color: #fff;
+	font-weight: 400;
+	border-radius: 5px;
+	width: 100%;
+}
+
+footer {
+	font-weight: 250;
+}
+
+/* Ocular label del @ del username */
+.sr-only {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
 }
