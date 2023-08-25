@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<meta charset="UTF-8" />
+		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Masterdots Game</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,6 +11,7 @@
 			rel="stylesheet" />
 		<link rel="stylesheet" href="./css/reset.css" />
 		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="icon" type="image/x-icon" href="./images/favicon.ico.png" />
 	</head>
 
 	<body>
@@ -20,28 +21,32 @@
 		</header>
 		<!-- form -->
 		<main>
-			<form action="#">
+			<form action="game.html" id="entryForm">
 				<div class="itemform">
 					<label for="nicka" class="sr-only">Arroba</label>
-					<label for="nick">Enter your name:</label>
+					<label for="nick">Enter your nickname:</label>
 					<input type="text" name="nick" id="nick" />
 					<input type="text" name="nick" value="@" id="nicka" readonly />
 				</div>
 				<div class="itemform">
 					<label for="email">Enter your email:</label>
-					<input type="email" id="email" placeholder="yo@iam.es" />
+					<input
+						type="email"
+						id="email"
+						placeholder="yo@iam.es"
+						autocomplete="email" />
 				</div>
 				<div class="itemform">
 					<label for="size">Size for the game: </label>
-					<select name="size" id="size" required>
-						<option value="">--Select the size--</option>
+					<select name="size" id="size">
+						<option value="0">--Select the size--</option>
 						<option value="1">4x4</option>
 						<option value="2">5x5</option>
 						<option value="3">6x6</option>
 					</select>
 				</div>
 				<div class="itemform">
-					<input type="submit" value="Play" />
+					<input type="submit" value="Play" id="play" />
 				</div>
 			</form>
 		</main>
@@ -50,6 +55,6 @@
 			<p>Curso Frontend Mastermind, HTML, CSS & JS</p>
 		</footer>
 		<!-- JS -->
-		<script src="./js/app.js"></script>
+		<script src="./js/app.js" defer></script>
 	</body>
 </html>
