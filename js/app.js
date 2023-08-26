@@ -3,21 +3,22 @@
 const nickInput = document.getElementById("nick");
 const sizeInput = document.getElementById("size");
 const entryForm = document.getElementById("entryForm");
+const error = document.getElementById("error");
 
 // Event Listeners functions
 function checkForm(event) {
 
-   if (nickInput.value.length == 0)
+   if (nickInput.value.match(/(?<!\s)[0-9]/))
    {
-      console.log("Please enter your name");
       nickInput.focus(); // Sets the focus to the nickname input
       event.preventDefault(); // Prevents the form from being submitted
+      error.innerText = "Nickname cannot start with a number"; // Sets the error message
       return false;
-   } else if (sizeInput.value == "0")
+   } else if (sizeInput.value == "")
    {
-      console.log("Please select the size");
       sizeInput.focus();
       event.preventDefault();
+      error.innerText = "Please select the size";
       return false;
    }
    return true;
