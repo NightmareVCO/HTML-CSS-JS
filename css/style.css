@@ -25,12 +25,20 @@ form {
 
 /* Cambiado por row-gap arriba */
 /* .itemform {
-	margin-bottom: 10px; 
+	margin-bottom: 10px;
 } */
 
 label {
 	display: block;
 	margin-bottom: 10px;
+}
+
+#error {
+	text-align: center;
+	color: red;
+	font-weight: 300;
+	font-size: 18px;
+	margin: 10px 0px 10px 0px;
 }
 
 #nicka {
