@@ -1,10 +1,29 @@
+/*
+* This is the main file of the application.
+* JS to manage the form
+*
+* @author Vladimir Curiel <vladimircuriel@outllook.com>
+* @link https://github.com/NightmareVCO/HTML-CSS-JS
+*/
+
+
 // Initialization of the variables and DOM.
+
+// user
 const nickInput = document.getElementById("nick");
+const emailInput = document.getElementById("email");
 const sizeInput = document.getElementById("size");
+
+const user = {
+   nickName: nickInput,
+   email: emailInput,
+   size: sizeInput,
+};
+
+// document
 const entryForm = document.getElementById("entryForm");
 const error = document.getElementById("error");
 
-console.log("🚀 ~ file: app.js:9 ~ sessionStorage.getItem:",sessionStorage.getItem("error"));
 // Check if there are errors in the sessionStorage.
 if (sessionStorage.getItem("error") != null)
 {
@@ -13,6 +32,12 @@ if (sessionStorage.getItem("error") != null)
 }
 
 // Event Listeners functions
+/**
+ * Checks the form inputs and returns true if the form is valid, false otherwise.
+ *
+ * @param {Event} event - The event object triggered by the form submission.
+ * @return {boolean} Returns true if the form is valid, false otherwise.
+ */
 function checkForm(event) {
 
    if (nickInput.value.match(/(?<!\s)[0-9]/))
@@ -31,13 +56,23 @@ function checkForm(event) {
    return true;
 }
 
-function saveData() {
-   setUserData(nickInput);
-   usersList(nickInput);
+/**
+ * Sets the data by calling the 'setUserData', 'getUserData', and 'usersList' functions.
+ *
+ * @param {type} user - the user data to be set
+ * @return {type} - the return value of the last function called
+ */
+function setData() {
+   setUserData(user);
+   getUserData();
+   usersList();
 }
 
 //Event Initialization
 entryForm.addEventListener("submit",function (event) {
    if (checkForm(event))
-      saveData();
+      setData();
 });
+
+// location
+geoLocation();
