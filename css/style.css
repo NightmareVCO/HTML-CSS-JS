@@ -41,6 +41,15 @@ label {
 	margin: 10px 0px 10px 0px;
 }
 
+/* Ocular label del @ del username */
+.sr-only {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
 #nicka {
 	float: left;
 	font-family: "Poppins", sans-serif;
@@ -82,6 +91,41 @@ select {
 	font-size: 18px;
 }
 
+#avatar {
+	float: left;
+}
+
+#avatarContainer {
+	display: flex;
+	background-color: #fff;
+	border: solid 1px #fd0c49;
+	border-radius: 5px;
+	width: 125px;
+	height: 125px;
+	justify-content: center;
+	align-items: center;
+	margin-right: 10px;
+}
+
+#avatargrid {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 5px;
+	margin-top: 30px;
+}
+
+.avatarItem {
+	background-color: #fff;
+	border: solid 1px #fd0c49;
+	border-radius: 5px;
+	width: 40px;
+	height: 40px;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
 input[type="submit"] {
 	background-color: #fd0c49;
 	color: #fff;
@@ -92,13 +136,4 @@ input[type="submit"] {
 
 footer {
 	font-weight: 250;
-}
-
-/* Ocular label del @ del username */
-.sr-only {
-	position: absolute;
-	left: -9999px;
-	width: 1px;
-	height: 1px;
-	overflow: hidden;
 }
