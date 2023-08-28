@@ -15,7 +15,9 @@ let user;
 // document
 let entryForm;
 let error;
-
+let avatarItems;
+let itemImg;
+let avatarContainer;
 // Event Listeners functions
 /**
  * Checks the form inputs and returns true if the form is valid, false otherwise.
@@ -88,6 +90,8 @@ function DOMInit() {
    // document
    entryForm = document.getElementById("entryForm");
    error = document.getElementById("error");
+   avatarItems = document.getElementsByClassName("avatarImgItem");
+   avatarContainer = document.getElementById("avatarImg");
 }
 
 /**
@@ -105,15 +109,37 @@ function checkError() {
 }
 
 
+function draggedImg(event) {
+   itemImg = event.target;
+}
+
+function dropImg(event) {
+   avatarContainer.src = itemImg.src;
+}
+
 //Event Initialization
 document.addEventListener('DOMContentLoaded',(event) => {
    DOMInit();
    checkError();
 
+   // Event Listeners
+   // Form
    entryForm.addEventListener("submit",(event) => {
       if (checkForm(event))
          setData();
    });
+
+   // Drag and drop
+   for (let item of avatarItems)
+      item.addEventListener("dragstart",draggedImg);
+   // to do the drop
+   avatarContainer.addEventListener("dragover",(event) => {
+      event.preventDefault();
+   });
+   avatarContainer.addEventListener("drop",dropImg);
+
+
+
 });
 
 // location
