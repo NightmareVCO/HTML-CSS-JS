@@ -6,30 +6,15 @@
 * @link https://github.com/NightmareVCO/HTML-CSS-JS
 */
 
-
-// Initialization of the variables and DOM.
-
-// user
-const nickInput = document.getElementById("nick");
-const emailInput = document.getElementById("email");
-const sizeInput = document.getElementById("size");
-
-const user = {
-   nickName: nickInput,
-   email: emailInput,
-   size: sizeInput,
-};
-
+//  global variables
+//user
+let nickInput;
+let emailInput;
+let sizeInput;
+let user;
 // document
-const entryForm = document.getElementById("entryForm");
-const error = document.getElementById("error");
-
-// Check if there are errors in the sessionStorage.
-if (sessionStorage.getItem("error") != null)
-{
-   error.innerText = sessionStorage.getItem("error");
-   sessionStorage.removeItem("error");
-}
+let entryForm;
+let error;
 
 // Event Listeners functions
 /**
@@ -57,21 +42,78 @@ function checkForm(event) {
 }
 
 /**
+ * Sets the user object with the values from the input fields.
+ *
+ * @param {string} nickInput - The nickname of the user.
+ * @param {string} emailInput - The email address of the user.
+ * @param {string} sizeInput - The size of the user.
+ * @return {undefined} This function does not return anything.
+ */
+function setUser() {
+   user = {
+      nickName: nickInput,
+      email: emailInput,
+      size: sizeInput,
+   };
+}
+
+/**
  * Sets the data by calling the 'setUserData', 'getUserData', and 'usersList' functions.
  *
  * @param {type} user - the user data to be set
  * @return {type} - the return value of the last function called
  */
 function setData() {
+   setUser();
    setUserData(user);
    getUserData();
    usersList();
 }
 
+/**
+ * Initializes the DOM elements for user input and document manipulation.
+ *
+ * @param {Object} nickInput - The input element for the user's nickname.
+ * @param {Object} emailInput - The input element for the user's email.
+ * @param {Object} sizeInput - The input element for the user's desired size.
+ * @param {Object} entryForm - The form element for user entry.
+ * @param {Object} error - The element to display error messages.
+ * @return {void} This function does not return anything.
+ */
+function DOMInit() {
+   // user
+   nickInput = document.getElementById("nick");
+   emailInput = document.getElementById("email");
+   sizeInput = document.getElementById("size");
+   // document
+   entryForm = document.getElementById("entryForm");
+   error = document.getElementById("error");
+}
+
+/**
+ * Checks for any error stored in the sessionStorage and displays it if found.
+ *
+ * @param {string} error - The error message to be displayed.
+ * @return {void} This function does not return anything.
+ */
+function checkError() {
+   if (sessionStorage.getItem("error") != null)
+   {
+      error.innerText = sessionStorage.getItem("error");
+      sessionStorage.removeItem("error");
+   }
+}
+
+
 //Event Initialization
-entryForm.addEventListener("submit",function (event) {
-   if (checkForm(event))
-      setData();
+document.addEventListener('DOMContentLoaded',(event) => {
+   DOMInit();
+   checkError();
+
+   entryForm.addEventListener("submit",(event) => {
+      if (checkForm(event))
+         setData();
+   });
 });
 
 // location
