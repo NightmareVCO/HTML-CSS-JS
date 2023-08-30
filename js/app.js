@@ -108,17 +108,27 @@ function checkError() {
    }
 }
 
-
+/**
+ * A function that handles the event when an image is dragged.
+ *
+ * @param {Event} event - The event object that triggered the function.
+ */
 function draggedImg(event) {
    itemImg = event.target;
 }
 
+/**
+ * Drops the image from the event onto the avatar container.
+ *
+ * @param {Event} event - The event containing the image being dropped.
+ * @return {undefined} This function does not return a value.
+ */
 function dropImg(event) {
    avatarContainer.src = itemImg.src;
 }
 
 //Event Initialization
-document.addEventListener('DOMContentLoaded',(event) => {
+function main() {
    DOMInit();
    checkError();
 
@@ -133,14 +143,11 @@ document.addEventListener('DOMContentLoaded',(event) => {
    for (let item of avatarItems)
       item.addEventListener("dragstart",draggedImg);
    // to do the drop
-   avatarContainer.addEventListener("dragover",(event) => {
-      event.preventDefault();
-   });
+   avatarContainer.addEventListener("dragover",event => event.preventDefault());
    avatarContainer.addEventListener("drop",dropImg);
+}
 
-
-
-});
+document.addEventListener('DOMContentLoaded',main);
 
 // location
 geoLocation();
