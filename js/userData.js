@@ -9,6 +9,7 @@
 let nickName;
 let email;
 let size;
+let avatarImg;
 let locationPlace;
 
 // SessionStorage (while logged in)
@@ -18,10 +19,11 @@ let locationPlace;
  * @return {undefined} No return value.
  */
 function setUserData(user) {
-   sessionStorage.setItem("nickName",user.nickName.value);
-   sessionStorage.setItem("email",user.email.value);
-   sessionStorage.setItem("size",user.size.value);
-   sessionStorage.setItem("location",locationPlace);
+   sessionStorage.setItem("nickName", user.nickName.value);
+   sessionStorage.setItem("email", user.email.value);
+   sessionStorage.setItem("size", user.size.value);
+   sessionStorage.setItem("avatar", user.avatar.src);
+   sessionStorage.setItem("location", locationPlace);
 }
 
 // Al llamar esta función tenemos lo valores directamente, no hay que pedirle nada
@@ -34,6 +36,7 @@ function getUserData() {
    nickName = sessionStorage.getItem("nickName");
    email = sessionStorage.getItem("email");
    size = sessionStorage.getItem("size");
+   avatarImg = sessionStorage.getItem("avatar");
 }
 
 /**
@@ -42,9 +45,8 @@ function getUserData() {
  * @return {boolean} Whether the user data is valid or not.
  */
 function checkUserData() {
-   if (nickName == null)
-   {
-      sessionStorage.setItem('error','You must fill the form first!');
+   if (nickName == null) {
+      sessionStorage.setItem('error', 'You must fill the form first!');
       return false;
    }
    return true;
@@ -63,7 +65,7 @@ function geoLocation() {
          (success) => {
             locationPlace = "Latitude: " + success.coords.latitude + " Longitude: " + success.coords.longitude;
          }
-         ,(error) => {
+         , (error) => {
             locationPlace = "Unable to retrieve your location";
          });
 }
@@ -103,6 +105,6 @@ function usersList() {
    let userList = getUserList();
 
    userList.push(user);
-   localStorage.setItem("userList",JSON.stringify(userList));
+   localStorage.setItem("userList", JSON.stringify(userList));
 }
 
