@@ -180,14 +180,24 @@ function calcAdjacentDots(markedID) {
       console.log(adjacentDots[i]);
 }
 
+function stopGame() {
+   const items = document.getElementsByClassName("item");
+   for (const item of items) {
+      item.removeEventListener("mousedown", markDot);
+      item.removeEventListener("mouseover", continueDot);
+   }
+   document.removeEventListener("mouseup", endDot);
+}
+
 function timer() {
    let timer = document.getElementById("tmpo");
    if (parseInt(timer.value) > 0)
       timer.value = parseInt(timer.value) - 1;
-   else if (parseInt(timer.value) == 0)
+   else if (parseInt(timer.value) == 0) {
       clearInterval(intervalID);
+      stopGame();
+   }
 }
-
 
 // Events
 function setEventsGame() {
