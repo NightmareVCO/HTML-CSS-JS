@@ -76,8 +76,8 @@ img {
 	border-radius: 5px;
 }
 .item {
-	background-color: #7ac943;
-	border-radius: 25px;
+	border-radius: 45px;
+	border: solid 10px #fff;
 	width: 50px;
 	height: 50px;
 }
@@ -89,6 +89,9 @@ img {
 }
 .verde {
 	background-color: #7ac943;
+}
+.morado {
+	background-color: #9b59b6;
 }
 #contenedorJuego {
 	width: 500px;
