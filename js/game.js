@@ -5,17 +5,23 @@
 * @link https://github.com/NightmareVCO/HTML-CSS-JS
 */
 const colors = ["rojo", "verde", "azul", "morado"];
+const scoreMultiplier = 10;
 let marked = false;
 
 let adjacentDots = [];
+let markedID = [];
 let sizeInt = 0;
 let selectedColor = "";
+
 
 
 function getRandInteger(max) {
    return Math.floor(Math.random() * max);
 }
 
+function getRandColor() {
+   return colors[getRandInteger(colors.length)];
+}
 /**
  * Sets the user data for the game.
  *
@@ -50,13 +56,13 @@ function createDots() {
    const boardSize = getBoardSize();
 
    let items = "";
-   let color = 0;
+   let color = getRandColor();
 
    for (let i = 0; i < boardSize; i++) {
       if (i % 2 > 0) //Para evadir las casillas aisladas
-         color = getRandInteger(colors.length);
+         color = getRandColor();
 
-      items += `<div class="containerItem"><div id="${i}" class="item ${colors[color]}"></div></div>`;
+      items += `<div class="containerItem"><div id="${i}" class="item ${color}"></div></div>`;
    }
    document.getElementById("juego").innerHTML = items;
 }
@@ -64,6 +70,7 @@ function createDots() {
 function markDot(event) {
    const color = 1; //porque en el classlist, el elemento 1 es el color.
    let item = event.target;
+   let itemID = parseInt(item.id);
    let itemContainer = event.target.parentElement;
 
    for (let i = 0; i < colors.length; i++)
@@ -75,6 +82,7 @@ function markDot(event) {
    if (!marked)
       marked = true;
 
+   markedID.push(itemID);
    calcAdjacentDots(parseInt(item.id));
 
    /*
@@ -97,6 +105,7 @@ function continueDot(event) {
          for (let i = 0; i < colors.length; i++)
             if (item.classList.contains(colors[i])) {
                itemContainer.classList.add(colors[i]);
+               markedID.push(itemID);
                calcAdjacentDots(parseInt(item.id));
                break; // Salir del bucle cuando se haya encontrado el color
             }
@@ -105,9 +114,38 @@ function continueDot(event) {
    }
 }
 
+function getScore() {
+   return markedID.length * scoreMultiplier;
+}
+
 function endDot() {
    if (marked)
       marked = false;
+   adjacentDots = [];
+
+   let score = document.getElementById("puntuacion");
+
+   if (markedID.length > 1) {
+      for (let i = 0; i < markedID.length; i++) {
+         let markedItem = document.getElementById(markedID[i]);
+         markedItem.parentElement.classList.remove(selectedColor);
+
+         markedItem.classList.remove(selectedColor);
+         markedItem.classList.add(getRandColor());
+      }
+      score.value = parseInt(score.value) + getScore();
+   }
+   else {
+      for (let i = 0; i < markedID.length; i++) {
+         let markedItem = document.getElementById(markedID[i]);
+         markedItem.parentElement.classList.remove(selectedColor);
+      }
+   }
+
+
+
+   markedID = [];
+
 }
 
 /**
