@@ -187,6 +187,12 @@ function stopGame() {
       item.removeEventListener("mouseover", continueDot);
    }
    document.removeEventListener("mouseup", endDot);
+
+   document.getElementById("juegoAcabado").classList.add("juegoAcabadoColor");
+
+   document.getElementById("juegoAcabado").style.zIndex = 2;
+   document.getElementById("juego").style.zIndex = 1;
+   document.getElementById("nuevaPartida").addEventListener("click", () => location.reload());
 }
 
 function timer() {
