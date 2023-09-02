@@ -4,10 +4,10 @@
 * @author Vladimir Curiel <vladimircuriel@outllook.com>
 * @link https://github.com/NightmareVCO/HTML-CSS-JS
 */
-const colors = ["rojo", "verde"];
+const colors = ["rojo", "verde", "azul", "morado"];
 
-function getRndInteger(min, max) {
-   return Math.floor(Math.random() * (max - min + 1)) + min;
+function getRandInteger(max) {
+   return Math.floor(Math.random() * max);
 }
 
 /**
@@ -40,17 +40,41 @@ function createDots() {
    const boardSize = getSizeInt();
 
    let items = "";
-   let color;
+   let color = 0;
+
    for (let i = 0; i < boardSize; i++) {
       if (i % 2 > 0) //Para evadir las casillas aisladas
-         color = colors[getRndInteger(0, 1)];
-      items += `<div class="containerItem"><div class="item ${color}"></div></div>`;
+         color = getRandInteger(colors.length);
+
+      items += `<div class="containerItem"><div class="item ${colors[color]}"></div></div>`;
    }
    document.getElementById("juego").innerHTML = items;
 }
 
+function markDot(event) {
+   let item = event.target;
+   let itemContainer = event.target.parentElement;
 
+   for (let i = 0; i < colors.length; i++)
+      if (item.classList.contains(colors[i])) {
+         itemContainer.classList.add(colors[i]);
+         break; // Salir del bucle cuando se haya encontrado el color
+      }
+   /*
+      if (item.classList.contains("rojo"))
+         itemContainer.classList.add("rojo");
+      else if (item.classList.contains("verde"))
+         itemContainer.classList.add("verde");
+      else if (item.classList.contains("azul"))
+         itemContainer.classList.add("azul");
+   */
+}
 
+function setEventsGame() {
+   const items = document.getElementsByClassName("item");
+   for (const item of items)
+      item.addEventListener("mousedown", markDot);
+}
 
 getUserData();
 // check if the user data is valid
@@ -59,3 +83,4 @@ if (!checkUserData())
 
 setUserDataGame();
 createGameBoard();
+setEventsGame();
