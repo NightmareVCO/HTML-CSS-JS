@@ -27,14 +27,12 @@ let avatarContainer;
  */
 function checkForm(event) {
 
-   if (nickInput.value.match(/(?<!\s)[0-9]/))
-   {
+   if (nickInput.value.match(/(?<!\s)[0-9]/)) {
       nickInput.focus(); // Sets the focus to the nickname input
       event.preventDefault(); // Prevents the form from being submitted
       error.innerText = "Nickname cannot start with a number"; // Sets the error message
       return false;
-   } else if (sizeInput.value == "")
-   {
+   } else if (sizeInput.value == "") {
       sizeInput.focus();
       event.preventDefault();
       error.innerText = "Please select the size";
@@ -56,6 +54,7 @@ function setUser() {
       nickName: nickInput,
       email: emailInput,
       size: sizeInput,
+      avatar: avatarContainer
    };
 }
 
@@ -101,8 +100,7 @@ function DOMInit() {
  * @return {void} This function does not return anything.
  */
 function checkError() {
-   if (sessionStorage.getItem("error") != null)
-   {
+   if (sessionStorage.getItem("error") != null) {
       error.innerText = sessionStorage.getItem("error");
       sessionStorage.removeItem("error");
    }
@@ -134,20 +132,20 @@ function main() {
 
    // Event Listeners
    // Form
-   entryForm.addEventListener("submit",(event) => {
+   entryForm.addEventListener("submit", (event) => {
       if (checkForm(event))
          setData();
    });
 
    // Drag and drop
    for (let item of avatarItems)
-      item.addEventListener("dragstart",draggedImg);
+      item.addEventListener("dragstart", draggedImg);
    // to do the drop
-   avatarContainer.addEventListener("dragover",event => event.preventDefault());
-   avatarContainer.addEventListener("drop",dropImg);
+   avatarContainer.addEventListener("dragover", event => event.preventDefault());
+   avatarContainer.addEventListener("drop", dropImg);
 }
 
-document.addEventListener('DOMContentLoaded',main);
+document.addEventListener('DOMContentLoaded', main);
 
 // location
 geoLocation();
