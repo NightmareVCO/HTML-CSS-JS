@@ -74,13 +74,21 @@ img {
 	min-width: 75px;
 	min-height: 75px;
 	border-radius: 5px;
-	border: 1px solid #ced4da;
 }
 .item {
 	background-color: #7ac943;
-	border-radius: 5px;
+	border-radius: 25px;
 	width: 50px;
 	height: 50px;
+}
+.rojo {
+	background-color: #fd0c49;
+}
+.azul {
+	background-color: #00a8cc;
+}
+.verde {
+	background-color: #7ac943;
 }
 #contenedorJuego {
 	width: 500px;
