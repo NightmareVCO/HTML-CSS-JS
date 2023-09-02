@@ -12,6 +12,7 @@ let adjacentDots = [];
 let markedID = [];
 let sizeInt = 0;
 let selectedColor = "";
+let intervalID;
 
 
 
@@ -179,7 +180,13 @@ function calcAdjacentDots(markedID) {
       console.log(adjacentDots[i]);
 }
 
-
+function timer() {
+   let timer = document.getElementById("tmpo");
+   if (parseInt(timer.value) > 0)
+      timer.value = parseInt(timer.value) - 1;
+   else if (parseInt(timer.value) == 0)
+      clearInterval(intervalID);
+}
 
 
 // Events
@@ -191,7 +198,7 @@ function setEventsGame() {
    }
    document.addEventListener("mouseup", endDot);
 
-
+   setInterval(timer, 1000);
 }
 
 // Main
