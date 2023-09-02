@@ -5,6 +5,12 @@
 * @link https://github.com/NightmareVCO/HTML-CSS-JS
 */
 const colors = ["rojo", "verde", "azul", "morado"];
+let marked = false;
+
+let adjacentDots = [];
+let sizeInt = 0;
+let selectedColor = "";
+
 
 function getRandInteger(max) {
    return Math.floor(Math.random() * max);
@@ -19,6 +25,7 @@ function getRandInteger(max) {
 function setUserDataGame() {
    document.getElementById("nick").value = nickName;
    document.getElementById("avatarImg").src = avatarImg;
+   sizeInt = getSizeInt();
 }
 
 function createGameBoard() {
@@ -32,12 +39,15 @@ function setBoardSize() {
 }
 
 function getSizeInt() {
-   const sizeInt = parseInt(size);
+   return sizeInt = parseInt(size);
+}
+
+function getBoardSize() {
    return sizeInt ** 2;
 }
 
 function createDots() {
-   const boardSize = getSizeInt();
+   const boardSize = getBoardSize();
 
    let items = "";
    let color = 0;
@@ -46,20 +56,27 @@ function createDots() {
       if (i % 2 > 0) //Para evadir las casillas aisladas
          color = getRandInteger(colors.length);
 
-      items += `<div class="containerItem"><div class="item ${colors[color]}"></div></div>`;
+      items += `<div class="containerItem"><div id="${i}" class="item ${colors[color]}"></div></div>`;
    }
    document.getElementById("juego").innerHTML = items;
 }
 
 function markDot(event) {
+   const color = 1; //porque en el classlist, el elemento 1 es el color.
    let item = event.target;
    let itemContainer = event.target.parentElement;
 
    for (let i = 0; i < colors.length; i++)
       if (item.classList.contains(colors[i])) {
          itemContainer.classList.add(colors[i]);
+         selectedColor = item.classList[color];
          break; // Salir del bucle cuando se haya encontrado el color
       }
+   if (!marked)
+      marked = true;
+
+   calcAdjacentDots(parseInt(item.id));
+
    /*
       if (item.classList.contains("rojo"))
          itemContainer.classList.add("rojo");
@@ -70,12 +87,76 @@ function markDot(event) {
    */
 }
 
-function setEventsGame() {
-   const items = document.getElementsByClassName("item");
-   for (const item of items)
-      item.addEventListener("mousedown", markDot);
+function continueDot(event) {
+   if (marked) {
+      let item = event.target;
+      let itemID = parseInt(item.id);
+
+      if (adjacentDots.includes(itemID) && item.classList.contains(selectedColor)) {
+         let itemContainer = event.target.parentElement;
+         for (let i = 0; i < colors.length; i++)
+            if (item.classList.contains(colors[i])) {
+               itemContainer.classList.add(colors[i]);
+               calcAdjacentDots(parseInt(item.id));
+               break; // Salir del bucle cuando se haya encontrado el color
+            }
+      }
+
+   }
 }
 
+function endDot() {
+   if (marked)
+      marked = false;
+}
+
+/**
+ * Generates an array of adjacent dots based on the given markedID.
+ *
+ * @param {number} markedID - The ID of the marked dot.
+ * @return {array} An array containing the IDs of the adjacent dots.
+ *
+ * reminder: just works when moving the mouse over the dots, not clicking them
+ */
+function calcAdjacentDots(markedID) {
+   adjacentDots = [];
+
+   // up
+   if (markedID - sizeInt >= 0)
+      adjacentDots.push(markedID - sizeInt);
+
+   // down
+   if (markedID + sizeInt < getBoardSize())
+      adjacentDots.push(markedID + sizeInt);
+
+   // left
+   if (markedID % sizeInt != 0)
+      adjacentDots.push(markedID - 1);
+
+   // right
+   if (markedID % sizeInt != sizeInt - 1)
+      adjacentDots.push(markedID + 1);
+
+   for (let i = 0; i < adjacentDots.length; i++)
+      console.log(adjacentDots[i]);
+}
+
+
+
+
+// Events
+function setEventsGame() {
+   const items = document.getElementsByClassName("item");
+   for (const item of items) {
+      item.addEventListener("mousedown", markDot);
+      item.addEventListener("mouseover", continueDot);
+   }
+   document.addEventListener("mouseup", endDot);
+
+
+}
+
+// Main
 getUserData();
 // check if the user data is valid
 if (!checkUserData())
