@@ -83,19 +83,27 @@ img {
 }
 .rojo {
 	background-color: #fd0c49;
+	transition: background-color 0.4s;
 }
 .azul {
 	background-color: #00a8cc;
+	transition: background-color 0.4s;
 }
 .verde {
 	background-color: #7ac943;
+	transition: background-color 0.4s;
 }
 .morado {
 	background-color: #9b59b6;
+	transition: background-color 0.4s;
 }
 #contenedorJuego {
 	width: 500px;
 	margin-right: 10px;
+}
+.juegoAcabadoColor {
+	background-color: #263238;
+	transition: background-color 0.4s;
 }
 #juego {
 	position: absolute;
@@ -117,7 +125,6 @@ img {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #263238;
 	border: 1px solid #ced4da;
 	border-radius: 5px 5px 0px 0px;
 	width: 500px;
