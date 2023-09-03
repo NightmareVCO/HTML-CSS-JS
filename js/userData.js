@@ -70,8 +70,6 @@ function geoLocation() {
          });
 }
 
-
-
 // LocalStorage
 /**
  * Creates user data object.

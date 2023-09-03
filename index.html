@@ -1,133 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Masterdots Game</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap"
-			rel="stylesheet" />
-		<link rel="stylesheet" href="./css/reset.css" />
-		<link rel="stylesheet" href="./css/style.css" />
-		<link rel="icon" type="image/x-icon" href="./images/favicon.ico.png" />
-	</head>
 
-	<body>
-		<!-- header -->
-		<header>
-			<img src="./images/logo.png" alt="Logo de Mastermind" />
-		</header>
-		<!-- form -->
-		<main>
-			<div>
-				<p id="error"></p>
-			</div>
-			<form action="game.html" id="entryForm">
-				<div class="itemform">
-					<label for="nicka" class="sr-only">Arroba</label>
-					<label for="nick">Enter your nickname*</label>
-					<input
-						type="text"
-						name="nick"
-						id="nick"
-						required
-						minlength="2" />
-					<input type="text" name="nick" value="@" id="nicka" readonly />
-				</div>
-				<div class="itemform">
-					<label for="email">Enter your email</label>
-					<input
-						type="email"
-						id="email"
-						placeholder="yo@iam.es"
-						autocomplete="email" />
-				</div>
-				<div class="itemform">
-					<label for="size">Size for the game*</label>
-					<select name="size" id="size">
-						<option value="">--Select the size--</option>
-						<option value="4">4x4</option>
-						<option value="5">5x5</option>
-						<option value="6">6x6</option>
-					</select>
-				</div>
-				<div class="itemform">
-					<div id="avatar">
-						<p>Avatar</p>
-						<div id="avatarContainer">
-							<img
-								src="./images/icons/icon1.png"
-								alt="Avatar selected"
-								id="avatarImg" />
-						</div>
-					</div>
-					<div id="avatargrid">
-						<div class="avatarItem">
-							<img
-								src="./images/icons/icon1.png"
-								class="avatarImgItem"
-								alt="Avatar #1"
-								width="35"
-								draggable="true" />
-						</div>
-						<div class="avatarItem">
-							<img
-								src="./images/icons/icon2.png"
-								class="avatarImgItem"
-								alt="Avatar #2"
-								width="35"
-								draggable="true" />
-						</div>
-						<div class="avatarItem">
-							<img
-								src="./images/icons/icon3.png"
-								class="avatarImgItem"
-								alt="Avatar #3"
-								width="35"
-								draggable="true" />
-						</div>
-						<div class="avatarItem">
-							<img
-								src="./images/icons/icon4.png"
-								class="avatarImgItem"
-								alt="Avatar #4"
-								width="35"
-								draggable="true" />
-						</div>
-						<div class="avatarItem">
-							<img
-								src="./images/icons/icon5.png"
-								class="avatarImgItem"
-								alt="Avatar #5"
-								width="35"
-								draggable="true" />
-						</div>
-						<div class="avatarItem">
-							<img
-								src="./images/icons/icon6.png"
-								class="avatarImgItem"
-								alt="Avatar #6"
-								width="35"
-								draggable="true" />
-						</div>
-					</div>
-				</div>
-				<div>
-					<p>* Required</p>
-				</div>
-				<div class="itemform">
-					<input type="submit" value="Play" id="play" />
-				</div>
-			</form>
-		</main>
-		<!-- footer -->
-		<footer>
-			<p>Curso Frontend Mastermind, HTML, CSS & JS</p>
-		</footer>
-		<!-- JS -->
-		<script src="./js/userData.js" defer></script>
-		<script src="./js/app.js" defer></script>
-	</body>
+<head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Masterdots Game</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet" />
+   <link rel="stylesheet" href="./css/reset.css" />
+   <link rel="stylesheet" href="./css/style.css" />
+   <link rel="icon" type="image/x-icon" href="./images/favicon.ico.png" />
+</head>
+
+<body>
+   <!-- header -->
+   <header>
+      <img src="./images/logo.png" alt="Logo de Mastermind" />
+   </header>
+   <!-- form -->
+   <main>
+      <div>
+         <p id="error"></p>
+      </div>
+      <form action="game.html" id="entryForm">
+         <div class="itemform">
+            <label for="nicka" class="sr-only">Arroba</label>
+            <label for="nick">Enter your nickname*</label>
+            <input type="text" name="nick" id="nick" required minlength="2" />
+            <input type="text" name="nick" value="@" id="nicka" readonly />
+         </div>
+         <div class="itemform">
+            <label for="email">Enter your email</label>
+            <input type="email" id="email" placeholder="yo@iam.es" autocomplete="email" />
+         </div>
+         <div class="itemform">
+            <label for="size">Size for the game*</label>
+            <select name="size" id="size">
+               <option value="">--Select the size--</option>
+               <option value="4">4x4</option>
+               <option value="5">5x5</option>
+               <option value="6">6x6</option>
+            </select>
+         </div>
+         <div class="itemform">
+            <div id="avatar">
+               <p>Avatar</p>
+               <div id="avatarContainer">
+                  <img src="./images/icons/icon1.png" alt="Avatar selected" id="avatarImg" />
+               </div>
+            </div>
+            <div id="avatargrid">
+               <div class="avatarItem">
+                  <img src="./images/icons/icon1.png" class="avatarImgItem" alt="Avatar #1" width="35" draggable="true" />
+               </div>
+               <div class="avatarItem">
+                  <img src="./images/icons/icon2.png" class="avatarImgItem" alt="Avatar #2" width="35" draggable="true" />
+               </div>
+               <div class="avatarItem">
+                  <img src="./images/icons/icon3.png" class="avatarImgItem" alt="Avatar #3" width="35" draggable="true" />
+               </div>
+               <div class="avatarItem">
+                  <img src="./images/icons/icon4.png" class="avatarImgItem" alt="Avatar #4" width="35" draggable="true" />
+               </div>
+               <div class="avatarItem">
+                  <img src="./images/icons/icon5.png" class="avatarImgItem" alt="Avatar #5" width="35" draggable="true" />
+               </div>
+               <div class="avatarItem">
+                  <img src="./images/icons/icon6.png" class="avatarImgItem" alt="Avatar #6" width="35" draggable="true" />
+               </div>
+            </div>
+         </div>
+         <div>
+            <p>* Required</p>
+         </div>
+         <div class="itemform">
+            <input type="submit" value="Play" id="play" />
+         </div>
+      </form>
+   </main>
+   <!-- footer -->
+   <footer>
+      <p>Curso Frontend Mastermind, HTML, CSS & JS</p>
+   </footer>
+   <!-- JS -->
+   <script src="./js/userData.js" defer></script>
+   <script src="./js/app.js" defer></script>
+</body>
+
 </html>
